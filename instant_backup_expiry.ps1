@@ -34,12 +34,12 @@ catch {
 $ExpiryTime = (get-date).addDays(5)
 
 Get-AzRecoveryServicesVault `
-    -ResourceGroupName "www.uniprint.net" `
-    -Name "vault647" | Set-AzRecoveryServicesVaultContext
+    -ResourceGroupName $resource_group `
+    -Name $vault_name | Set-AzRecoveryServicesVaultContext
 
 $backupcontainer = Get-AzRecoveryServicesBackupContainer `
     -ContainerType "AzureVM" `
-    -FriendlyName "up-prod-web"
+    -FriendlyName $vm_name_par
 
 $item = Get-AzRecoveryServicesBackupItem `
     -Container $backupcontainer `
